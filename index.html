@@ -1,1 +1,505 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="description" content="Prime Pariksha Rank Prediction SaaS — product scope and delivery proposal by Devphant."/><title>Prime Pariksha — Rank Prediction SaaS Proposal</title><link rel="icon" href="https://www.primepariksha.com/favicon.ico"/><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/><style>
+:root {
+  --black:#0A0A0A;--black-2:#111111;--black-3:#1A1A1A;--black-4:#222222;
+  --blue:#4A9EE7;--blue-dim:rgba(74,158,231,0.12);--blue-border:rgba(74,158,231,0.25);
+  --white:#FFFFFF;--white-60:rgba(255,255,255,0.6);--white-10:rgba(255,255,255,0.08);
+  --border:rgba(255,255,255,0.08);--muted:rgba(255,255,255,0.5);
+  --green:#34D399;--red:#F87171;--purple:#A78BFA;--amber:#FBBF24;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
 
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes glow-pulse{0%,100%{opacity:.15;}50%{opacity:.32;}}
+@keyframes pulse-ring{0%{box-shadow:0 0 0 0 rgba(74,158,231,.4);}70%{box-shadow:0 0 0 10px rgba(74,158,231,0);}100%{box-shadow:0 0 0 0 rgba(74,158,231,0);}}
+@keyframes barGrow{from{width:0;}}
+@keyframes lineGrow{from{stroke-dashoffset:400;}to{stroke-dashoffset:0;}}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+@keyframes shimmerSlide{0%{background-position:-400px 0;}100%{background-position:400px 0;}}
+@keyframes countUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+@keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+@keyframes scaleIn{from{opacity:0;transform:scale(0.92);}to{opacity:1;transform:scale(1);}}
+
+.animate{opacity:0;}
+.animate.visible{animation:fadeUp .55s cubic-bezier(.22,1,.36,1) forwards;}
+.animate.delay-1{animation-delay:.08s;}.animate.delay-2{animation-delay:.16s;}
+.animate.delay-3{animation-delay:.24s;}.animate.delay-4{animation-delay:.32s;}
+
+/* TOPBAR */
+.topbar{background:var(--black-2);border-bottom:1px solid var(--border);padding:14px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+.logo-pair{display:flex;align-items:center;gap:14px;}
+.logo-pair img{height:28px;display:block;}
+.logo-sep{width:1px;height:22px;background:rgba(255,255,255,0.15);}
+.topbar-right{font-size:12px;color:var(--muted);text-align:right;}
+.topbar-right strong{color:var(--white-60);}
+
+/* HERO */
+.hero{background:var(--black-2);border-bottom:1px solid var(--border);padding:80px 40px 64px;text-align:center;position:relative;overflow:hidden;}
+.hero-glow{position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:700px;height:320px;background:radial-gradient(ellipse,rgba(74,158,231,.18) 0%,transparent 70%);pointer-events:none;animation:glow-pulse 4s ease-in-out infinite;}
+.hero-glow-2{position:absolute;bottom:-60px;right:-80px;width:350px;height:350px;background:radial-gradient(ellipse,rgba(167,139,250,.1) 0%,transparent 70%);pointer-events:none;}
+.prepared-for{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:32px;animation:fadeIn .6s ease forwards;}
+.prep-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:2px;font-family:'Space Grotesk',sans-serif;}
+.prep-sep{width:24px;height:1px;background:var(--border);}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--blue-dim);border:1px solid var(--blue-border);color:var(--blue);font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:100px;margin-bottom:28px;animation:fadeIn .6s .1s ease both;}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);animation:pulse-ring 2s infinite;}
+.hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(36px,6vw,62px);font-weight:700;line-height:1.05;letter-spacing:-1.5px;animation:fadeUp .7s .15s cubic-bezier(.22,1,.36,1) both;margin-bottom:10px;}
+.hero h1 .accent{color:var(--blue);}
+.hero-sub{font-size:15px;color:var(--muted);margin:14px auto 40px;max-width:500px;animation:fadeUp .7s .22s cubic-bezier(.22,1,.36,1) both;}
+.hero-stats{display:inline-flex;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--black-3);animation:fadeUp .7s .3s cubic-bezier(.22,1,.36,1) both;}
+.stat-item{padding:20px 32px;text-align:center;border-right:1px solid var(--border);}
+.stat-item:last-child{border-right:none;}
+.stat-value{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;color:var(--white);line-height:1;margin-bottom:4px;}
+.stat-value em{color:var(--blue);font-style:normal;}
+.stat-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;font-family:'Space Grotesk',sans-serif;}
+
+/* LAYOUT */
+.container{max-width:900px;margin:0 auto;padding:0 24px;}
+section{padding:60px 0;border-bottom:1px solid var(--border);}
+.eyebrow{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--blue);margin-bottom:12px;}
+.section-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(22px,4vw,34px);font-weight:700;color:var(--white);letter-spacing:-.5px;margin-bottom:10px;line-height:1.15;}
+.section-desc{font-size:14px;color:var(--muted);max-width:600px;margin-bottom:36px;line-height:1.7;}
+
+/* PHASE HEADER */
+.phase-header{display:flex;align-items:center;gap:16px;padding:18px 24px;border-radius:12px;margin-bottom:0;transition:transform .2s;}
+.phase-header:hover{transform:translateX(4px);}
+.phase-header.p1{background:rgba(74,158,231,.07);border:1px solid var(--blue-border);}
+.phase-header.p2{background:rgba(167,139,250,.07);border:1px solid rgba(167,139,250,.25);}
+.phase-num{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;}
+.phase-num.p1{color:var(--blue);}.phase-num.p2{color:var(--purple);}
+.phase-name{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;color:var(--white);flex:1;}
+.phase-total{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--white-60);margin-left:auto;text-align:right;letter-spacing:0;}
+.phase-total.p1,.phase-total.p2{color:var(--white-60);}
+
+/* SCOPE TABLE */
+.scope-wrap{background:var(--black-3);border:1px solid var(--border);border-radius:0 0 14px 14px;overflow:hidden;margin-bottom:24px;}
+.scope-table{width:100%;border-collapse:collapse;table-layout:fixed;}
+.scope-table thead tr{border-bottom:1px solid var(--border);background:var(--black-4);}
+.scope-table thead th{font-family:'Space Grotesk',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:12px 16px;text-align:left;}
+.scope-table thead th:last-child{text-align:right;}
+.scope-table tbody tr{border-bottom:1px solid var(--border);transition:background .15s,transform .15s;cursor:default;}
+.scope-table tbody tr:last-child{border-bottom:none;}
+.scope-table tbody tr:hover{background:rgba(74,158,231,.05);}
+.scope-table tbody td{padding:18px 16px;vertical-align:top;min-width:0;}
+.td-num{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;color:var(--blue);width:36px;padding-top:20px;}
+.td-title{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:var(--white);margin-bottom:5px;}
+.td-desc{font-size:13px;color:var(--muted);line-height:1.65;white-space:normal;overflow-wrap:anywhere;word-break:normal;max-width:100%;}
+.td-week{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;color:var(--muted);white-space:normal;overflow-wrap:anywhere;width:80px;}
+
+
+/* TOTALS */
+.totals-box{background:var(--black-3);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-top:8px;}
+.total-row{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid var(--border);}
+.total-row:last-child{border-bottom:none;}
+.total-label{font-family:'Space Grotesk',sans-serif;font-size:13px;color:var(--muted);}
+.total-val{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;}
+.total-val.p1{color:var(--blue);}.total-val.p2{color:var(--purple);}
+.total-grand{background:var(--black-4);}
+.total-grand .total-label{font-size:15px;font-weight:700;color:var(--white);}
+.total-grand .total-val{font-size:24px;color:var(--white);}
+.total-grand .total-val em{color:var(--blue);font-style:normal;}
+.gst-note{font-size:11px;color:var(--green);margin-top:4px;font-weight:600;display:block;}
+
+/* PAYMENT TERMS */
+.payment-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.pay-card{background:var(--black-3);border:1px solid var(--border);border-radius:14px;padding:24px 22px;transition:border-color .2s,transform .2s,box-shadow .2s;position:relative;overflow:hidden;}
+.pay-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(74,158,231,.06) 0%,transparent 60%);opacity:0;transition:opacity .2s;}
+.pay-card:hover{border-color:var(--blue-border);transform:translateY(-3px);box-shadow:0 12px 32px rgba(74,158,231,.12);}
+.pay-card:hover::before{opacity:1;}
+.pay-stage{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:10px;}
+.pay-pct{font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:700;color:var(--white);letter-spacing:-1px;line-height:1;margin-bottom:4px;}
+.pay-amount{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:var(--blue);margin-bottom:10px;}
+.pay-when{font-size:13px;color:var(--muted);line-height:1.5;}
+.pay-badge{display:inline-block;margin-top:12px;background:var(--blue-dim);border:1px solid var(--blue-border);color:var(--blue);font-size:10px;font-weight:700;font-family:'Space Grotesk',sans-serif;padding:3px 10px;border-radius:100px;letter-spacing:1px;text-transform:uppercase;}
+
+/* AMC SECTION */
+.amc-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:24px;max-width:560px;}
+.amc-card{background:var(--black-3);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color .2s,transform .2s,box-shadow .2s;position:relative;}
+.amc-card:hover{border-color:var(--blue-border);transform:translateY(-3px);box-shadow:0 12px 32px rgba(74,158,231,.1);}
+.amc-card.featured{border-color:var(--blue-border);}
+.amc-card-tag{position:absolute;top:14px;right:14px;background:var(--blue);color:#fff;font-size:10px;font-weight:700;font-family:'Space Grotesk',sans-serif;padding:3px 12px;border-radius:100px;letter-spacing:1px;text-transform:uppercase;}
+.amc-header{padding:24px 24px 20px;border-bottom:1px solid var(--border);}
+.amc-tier{font-family:'Space Grotesk',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.amc-price{font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:700;color:var(--white);letter-spacing:-1px;line-height:1;margin-bottom:4px;}
+.amc-price span{font-size:13px;font-weight:400;color:var(--muted);letter-spacing:0;}
+.amc-sub{font-size:12px;color:var(--muted);margin-bottom:12px;}
+.amc-badge{display:inline-block;background:var(--blue-dim);border:1px solid var(--blue-border);color:var(--blue);font-size:10px;font-weight:700;font-family:'Space Grotesk',sans-serif;padding:3px 12px;border-radius:100px;letter-spacing:1px;text-transform:uppercase;}
+.amc-body{padding:20px 24px;}
+.amc-feats{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.amc-feats li{display:flex;gap:10px;font-size:13px;color:var(--muted);align-items:flex-start;line-height:1.5;}
+.amc-feats li span{color:var(--blue);flex-shrink:0;margin-top:1px;}
+.amc-note{background:rgba(74,158,231,.06);border:1px solid var(--blue-border);border-radius:12px;padding:16px 20px;display:flex;gap:12px;align-items:flex-start;}
+.amc-note p{font-size:13px;color:rgba(255,255,255,.65);line-height:1.65;}
+
+/* DASHBOARD */
+.db-wrap{background:var(--black-3);border:1px solid var(--border);border-radius:20px;overflow:hidden;}
+.db-topbar{background:var(--black-2);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.db-title-row{display:flex;align-items:center;gap:10px;}
+.db-dot{width:10px;height:10px;border-radius:50%;background:var(--blue);animation:pulse-ring 2s infinite;}
+.db-title{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:var(--white);}
+.db-live{background:var(--blue-dim);border:1px solid var(--blue-border);color:var(--blue);font-size:10px;font-weight:700;font-family:'Space Grotesk',sans-serif;padding:2px 10px;border-radius:100px;letter-spacing:1px;text-transform:uppercase;}
+.db-date{font-size:11px;color:var(--muted);font-family:'Space Grotesk',sans-serif;}
+
+/* DB TABS */
+.db-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);background:var(--black-4);overflow-x:auto;}
+.db-tab{padding:12px 20px;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;white-space:nowrap;user-select:none;}
+.db-tab.active{color:var(--blue);border-bottom-color:var(--blue);}
+.db-tab:hover:not(.active){color:var(--white-60);}
+.db-panel{display:none;}.db-panel.active{display:block;}
+
+/* KPIs */
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);}
+.kpi{padding:20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);}
+.kpi:nth-child(4){border-right:none;}
+.kpi-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-family:'Space Grotesk',sans-serif;margin-bottom:8px;}
+.kpi-value{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;color:var(--white);line-height:1;margin-bottom:6px;}
+.kpi-delta{font-size:12px;font-family:'Space Grotesk',sans-serif;font-weight:600;display:flex;align-items:center;gap:4px;}
+.kpi-delta.up{color:var(--green);}.kpi-delta.down{color:var(--red);}
+
+/* chart */
+.db-body{display:grid;grid-template-columns:1fr 280px;}
+.db-chart-area{padding:22px;border-right:1px solid var(--border);}
+.db-chart-title{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;color:var(--white);margin-bottom:3px;}
+.db-chart-sub{font-size:11px;color:var(--muted);margin-bottom:18px;}
+.chart-svg-wrap svg{width:100%;overflow:visible;}
+.chart-line{fill:none;stroke:var(--blue);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:400;animation:lineGrow 1.8s ease forwards;}
+.chart-line-2{fill:none;stroke:var(--purple);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:400;animation:lineGrow 2s .3s ease forwards;}
+.chart-area-fill{fill:url(#blueGrad);}
+.chart-x{display:flex;justify-content:space-between;margin-top:8px;}
+.chart-x span{font-size:10px;color:var(--muted);font-family:'Space Grotesk',sans-serif;}
+.db-sidebar{padding:22px;}
+.db-sidebar-title{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;color:var(--white);margin-bottom:14px;}
+.lead-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px;}
+.lead-info{display:flex;flex-direction:column;gap:2px;}
+.lead-name{font-size:12.5px;font-weight:600;color:var(--white);font-family:'Space Grotesk',sans-serif;}
+.lead-type{font-size:11px;color:var(--muted);}
+.lead-badge{font-size:10px;font-weight:700;font-family:'Space Grotesk',sans-serif;padding:3px 10px;border-radius:100px;white-space:nowrap;}
+.badge-new{background:rgba(52,211,153,.12);color:var(--green);border:1px solid rgba(52,211,153,.25);}
+.badge-contacted{background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue-border);}
+.badge-pending{background:rgba(251,191,36,.12);color:var(--amber);border:1px solid rgba(251,191,36,.25);}
+
+/* db bottom */
+.db-bottom{border-top:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.db-bottom-col{padding:20px;border-right:1px solid var(--border);}
+.db-bottom-col:last-child{border-right:none;}
+.mini-title{font-family:'Space Grotesk',sans-serif;font-size:11.5px;font-weight:700;color:var(--white);margin-bottom:14px;}
+.bar-row{display:flex;flex-direction:column;gap:9px;}
+.bar-item{display:flex;flex-direction:column;gap:4px;}
+.bar-top{display:flex;justify-content:space-between;}
+.bar-label{font-size:11px;color:var(--muted);font-family:'Space Grotesk',sans-serif;}
+.bar-val{font-size:11px;font-weight:700;color:var(--white);font-family:'Space Grotesk',sans-serif;}
+.bar-track{height:5px;background:var(--white-10);border-radius:100px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:100px;animation:barGrow 1.2s cubic-bezier(.22,1,.36,1) both;}
+.bar-fill.blue{background:var(--blue);}
+.bar-fill.purple{background:var(--purple);}
+.bar-fill.green{background:var(--green);}
+.bar-fill.amber{background:var(--amber);}
+.location-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.loc-name{font-size:12px;color:var(--muted);font-family:'Space Grotesk',sans-serif;}
+.loc-val{font-size:12px;font-weight:700;color:var(--white);font-family:'Space Grotesk',sans-serif;}
+
+/* SCHOOL LISTING panel */
+.school-list{display:flex;flex-direction:column;gap:0;}
+.school-row{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;border-bottom:1px solid var(--border);transition:background .15s;}
+.school-row:hover{background:var(--white-10);}
+.school-row:last-child{border-bottom:none;}
+.school-name{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--white);margin-bottom:3px;}
+.school-meta{font-size:11.5px;color:var(--muted);}
+.school-status{font-size:10px;font-weight:700;font-family:'Space Grotesk',sans-serif;padding:3px 10px;border-radius:100px;}
+.s-published{background:rgba(52,211,153,.12);color:var(--green);border:1px solid rgba(52,211,153,.25);}
+.s-draft{background:var(--white-10);color:var(--white-60);border:1px solid var(--border);}
+
+/* BLOG PANEL */
+.blog-list{display:flex;flex-direction:column;gap:0;}
+.blog-row{display:flex;align-items:flex-start;justify-content:space-between;padding:14px 22px;border-bottom:1px solid var(--border);gap:16px;transition:background .15s;}
+.blog-row:hover{background:var(--white-10);}
+.blog-row:last-child{border-bottom:none;}
+.blog-title{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.blog-meta{font-size:11.5px;color:var(--muted);}
+.blog-tag{font-size:10px;font-weight:700;font-family:'Space Grotesk',sans-serif;padding:3px 10px;border-radius:100px;white-space:nowrap;}
+.blog-published{background:rgba(52,211,153,.12);color:var(--green);border:1px solid rgba(52,211,153,.25);}
+.blog-draft{background:var(--white-10);color:var(--white-60);border:1px solid var(--border);}
+.blog-scheduled{background:rgba(251,191,36,.12);color:var(--amber);border:1px solid rgba(251,191,36,.25);}
+
+/* GANTT */
+.gantt-wrap{background:var(--black-3);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+.gantt-header{display:grid;grid-template-columns:220px repeat(5,1fr);background:var(--black-4);border-bottom:1px solid var(--border);}
+.gh-cell{padding:12px 8px;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);text-align:center;border-right:1px solid var(--border);}
+.gh-cell:first-child{text-align:left;padding-left:16px;}
+.gh-cell:last-child{border-right:none;}
+.gantt-phase-row{padding:10px 16px;background:var(--black-4);border-bottom:1px solid var(--border);font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;}
+.gantt-phase-row.p1{color:var(--blue);}.gantt-phase-row.p2{color:var(--purple);}
+.gantt-row{display:grid;grid-template-columns:220px repeat(5,1fr);border-bottom:1px solid var(--border);align-items:center;transition:background .15s;}
+.gantt-row:hover{background:var(--white-10);}
+.gantt-row:last-child{border-bottom:none;}
+.gr-label{padding:13px 16px;font-size:12.5px;color:var(--muted);border-right:1px solid var(--border);font-family:'Space Grotesk',sans-serif;font-weight:500;}
+.gr-cell{padding:13px 8px;border-right:1px solid var(--border);text-align:center;}
+.gr-cell:last-child{border-right:none;}
+.gantt-bar{height:8px;border-radius:100px;animation:barGrow 1s cubic-bezier(.22,1,.36,1) both;}
+.gantt-bar.p1{background:var(--blue);}.gantt-bar.p2{background:var(--purple);}
+
+/* EXCLUSIONS */
+.excl-category{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:14px 0 8px;border-bottom:1px solid var(--border);margin-bottom:4px;}
+.excl-row{display:grid;grid-template-columns:1fr 2fr auto;gap:16px;padding:14px 0;border-bottom:1px solid var(--border);align-items:start;transition:background .15s;}
+.excl-row:hover{background:rgba(255,255,255,.02);padding-left:8px;}
+.excl-row:last-child{border-bottom:none;}
+.excl-item{font-family:'Space Grotesk',sans-serif;font-size:13.5px;font-weight:600;color:var(--white);}
+.excl-detail{font-size:13px;color:var(--muted);line-height:1.55;}
+.excl-resp{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;white-space:nowrap;}
+.resp-client{background:rgba(248,113,113,.12);border:1px solid rgba(248,113,113,.25);color:var(--red);}
+.resp-sep{background:var(--blue-dim);border:1px solid var(--blue-border);color:var(--blue);}
+
+/* FLOATING INTERACTION ELEMENTS */
+.floating-card{animation:float 3s ease-in-out infinite;}
+.floating-card-2{animation:float 3s ease-in-out infinite;animation-delay:-1.5s;}
+
+/* FOOTER */
+footer{background:var(--black-2);border-top:1px solid var(--border);padding:36px 40px 28px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;}
+.footer-logos{display:flex;align-items:center;justify-content:center;gap:20px;}
+.footer-logos img{height:22px;opacity:.6;}
+.footer-sep{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:300;color:rgba(255,255,255,.2);}
+.footer-div{width:40px;height:1px;background:var(--border);}
+footer p{font-size:12px;color:var(--muted);line-height:1.7;}
+footer strong{color:var(--white-60);}
+
+/* RESPONSIVE */
+@media(max-width:680px){
+  .topbar{padding:12px 16px;}.hero{padding:44px 16px 36px;}
+  .hero h1{font-size:28px;letter-spacing:-.5px;}
+  .hero-stats{display:grid;grid-template-columns:1fr 1fr;}
+  .stat-item{border-right:none;border-bottom:1px solid var(--border);}
+  .stat-item:nth-child(odd){border-right:1px solid var(--border);}
+  .stat-item:nth-child(3),.stat-item:nth-child(4){border-bottom:none;}
+  .container{padding:0 16px;}section{padding:40px 0;}
+  .payment-grid,.amc-grid{grid-template-columns:1fr;}
+  .kpi-row{grid-template-columns:1fr 1fr;}
+  .kpi:nth-child(2){border-right:none;}.kpi:nth-child(3){border-right:1px solid var(--border);}
+  .db-body{grid-template-columns:1fr;}
+  .db-bottom{grid-template-columns:1fr;}
+  .db-bottom-col{border-right:none;border-bottom:1px solid var(--border);}
+  .db-bottom-col:last-child{border-bottom:none;}
+  .gantt-header,.gantt-row{grid-template-columns:130px repeat(5,1fr);}
+  .gr-label{font-size:11px;padding:10px;}
+  .excl-row{grid-template-columns:1fr;gap:6px;}
+  .scope-wrap{overflow-x:auto;}
+  footer{padding:28px 16px;}
+}
+
+/* Prime Pariksha adaptation; original Vidyapath proposal design system retained */
+.logo-pair .prime-brand{display:flex;align-items:center;gap:9px;color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;letter-spacing:-.3px;text-decoration:none;}
+.logo-pair .prime-brand img{height:30px;width:30px;object-fit:contain;border-radius:7px;background:#fff;padding:2px;}
+.hero h1 .accent{color:var(--blue);}
+.feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:28px 0 36px;}
+.feature-card{background:var(--black-3);border:1px solid var(--border);border-radius:14px;padding:22px;}
+.feature-card .feature-icon{font-size:22px;margin-bottom:12px;}
+.feature-card h3{font-family:'Space Grotesk',sans-serif;font-size:15px;margin-bottom:8px;}
+.feature-card p{font-size:12.5px;color:var(--muted);line-height:1.7;}
+.scope-table td:nth-child(2){min-width:165px;}
+.scope-table .td-desc{max-width:100%;}
+.note-panel{margin-top:22px;padding:18px 20px;border:1px solid var(--blue-border);background:var(--blue-dim);border-radius:12px;font-size:13px;color:var(--white-60);line-height:1.7;}
+.note-panel strong{color:var(--white);}
+.timeline-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:24px;}
+.timeline-card{background:var(--black-3);border:1px solid var(--border);border-radius:12px;padding:17px;}
+.timeline-card .week{font-family:'Space Grotesk',sans-serif;color:var(--blue);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;}
+.timeline-card h3{font-family:'Space Grotesk',sans-serif;font-size:14px;margin-bottom:7px;}
+.timeline-card p{font-size:12px;color:var(--muted);line-height:1.65;}
+.scope-label{margin-top:30px;}
+@media(max-width:700px){.topbar{padding:13px 18px}.logo-pair img{height:23px}.logo-pair .prime-brand{font-size:12px}.hero{padding:60px 18px 46px}.hero-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;max-width:480px}.stat-item{padding:17px 12px;border-bottom:1px solid var(--border)}.stat-item:nth-child(2){border-right:none}.stat-item:nth-child(3){border-bottom:none}.stat-item:nth-child(4){border-right:none;border-bottom:none}.feature-grid{grid-template-columns:1fr}.timeline-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.scope-wrap{overflow-x:auto}.scope-table{min-width:700px}footer{padding:30px 18px}}
+
+/* Dashboard panels and responsive data workflow */
+.db-content{padding:24px;min-width:0}
+.db-section-title{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;color:var(--white);margin-bottom:18px;line-height:1.35}
+.db-footnote{font-size:12px;color:var(--muted);line-height:1.65;margin-top:18px}
+.data-flow{display:grid;grid-template-columns:minmax(0,1fr) 20px minmax(0,1fr) 20px minmax(0,1fr) 20px minmax(0,1fr);gap:8px;align-items:stretch;width:100%}
+.flow-step{min-width:0;display:flex;flex-direction:column;gap:6px;padding:16px 12px;border:1px solid var(--border);border-radius:12px;background:var(--black-2)}
+.flow-step span{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--blue)}
+.flow-step strong{font-family:'Space Grotesk',sans-serif;font-size:13px;line-height:1.35;overflow-wrap:anywhere}
+.flow-step small{font-size:11px;color:var(--muted);line-height:1.5;overflow-wrap:anywhere}
+.flow-arrow{display:grid;place-items:center;color:var(--blue);font-size:18px}
+.mini-table{width:100%;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.mini-row{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,.8fr);gap:10px;padding:12px 14px;border-bottom:1px solid var(--border);font-size:12px;color:var(--muted);align-items:center}
+.mini-row:last-child{border-bottom:0}
+.mini-row span{min-width:0;overflow-wrap:anywhere}
+.mini-head{background:var(--black-4);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted)}
+.status-pill{display:inline-block;width:max-content;max-width:100%;padding:3px 9px;border:1px solid rgba(52,211,153,.25);border-radius:99px;background:rgba(52,211,153,.08);color:var(--green);font-size:10px}
+.subscription-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.subscription-steps>div{display:grid;grid-template-columns:10px minmax(0,1fr);column-gap:8px;row-gap:5px;padding:14px 12px;background:var(--black-2);border:1px solid var(--border);border-radius:10px;min-width:0}
+.subscription-steps strong{font-family:'Space Grotesk',sans-serif;font-size:12px;overflow-wrap:anywhere}
+.subscription-steps small{grid-column:2;font-size:11px;color:var(--muted);line-height:1.5}
+.status-dot{width:8px;height:8px;border-radius:50%;margin-top:5px}
+.status-dot.green{background:var(--green)}.status-dot.amber{background:var(--amber)}.status-dot.red{background:var(--red)}
+@media(max-width:700px){
+ .scope-table{min-width:0}
+ .scope-table th:nth-child(1),.scope-table td:nth-child(1){width:34px;padding-left:10px;padding-right:8px}
+ .scope-table th:nth-child(2){width:31%}
+ .scope-table th:nth-child(4){width:94px!important}
+ .scope-table tbody td{padding:13px 9px}
+ .td-title{font-size:12px}
+ .td-desc{font-size:11px}
+ .td-week{font-size:10px}
+ .data-flow{grid-template-columns:minmax(0,1fr) 16px minmax(0,1fr);gap:7px}
+ .flow-step{padding:12px 10px}
+ .flow-arrow:nth-of-type(4){display:none}
+ .flow-step:nth-of-type(5){grid-column:1}
+ .flow-step:nth-of-type(7){grid-column:3}
+ .db-content{padding:18px 14px}
+ .subscription-steps{grid-template-columns:1fr}
+ .mini-row{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,.8fr);gap:6px;padding:10px 8px;font-size:10px}
+}
+@media(max-width:440px){
+ .scope-table thead{display:none}
+ .scope-table,.scope-table tbody,.scope-table tr,.scope-table td{display:block;width:100%}
+ .scope-table tbody tr{padding:12px 14px}
+ .scope-table tbody td{padding:4px 0;border:0}
+ .scope-table tbody td:nth-child(1){display:none}
+ .scope-table tbody td:nth-child(2){padding-bottom:3px}
+ .scope-table tbody td:nth-child(3){padding-bottom:5px}
+ .scope-table tbody td:nth-child(4){font-size:10px}
+ .td-title{font-size:13px}
+ .td-desc{font-size:12px}
+ .data-flow{grid-template-columns:minmax(0,1fr) 14px minmax(0,1fr)}
+ .flow-arrow{font-size:14px}
+ .db-title-row{flex-wrap:wrap}.phase-header{gap:12px}.phase-total{font-size:12px;}
+}
+
+</style><body>
+<div class="topbar">
+  <div class="logo-pair">
+    <img src="https://devphant.com/images/logo.png" alt="Devphant" onerror="this.style.display='none'"/>
+    <span class="logo-sep"></span>
+    <a class="prime-brand" href="https://www.primepariksha.com" target="_blank" rel="noopener"><img src="https://www.primepariksha.com/favicon.ico" alt="Prime Pariksha logo"/><span>Prime Pariksha</span></a>
+  </div>
+  <div class="topbar-right"><strong>Rank Prediction SaaS</strong> &nbsp;·&nbsp; Project Proposal &nbsp;·&nbsp; October 2026</div>
+</div>
+<div class="hero">
+  <div class="hero-glow"></div><div class="hero-glow-2"></div>
+  <div class="prepared-for"><span class="prep-label">Prepared by Devphant</span></div>
+  <div class="hero-badge"><span class="badge-dot"></span> Prime Pariksha · Product Proposal · 2026</div>
+  <h1>Prime Pariksha<br/><span class="accent">Rank Prediction SaaS</span></h1>
+  <p class="hero-sub">A focused, multi tenant rank prediction platform for NEET PG, NEET UG and JEE — with managed college/AIR data, state wise result uploads, dashboards and subscriptions.</p>
+  <div class="hero-stats">
+    <div class="stat-item"><div class="stat-value"><em>₹</em>3,00,000</div><div class="stat-label">Total Project Cost</div></div>
+    <div class="stat-item"><div class="stat-value">12 <em style="font-size:14px;font-weight:400;">weeks</em></div><div class="stat-label">Delivery Timeline</div></div>
+    <div class="stat-item"><div class="stat-value">03</div><div class="stat-label">Exam Categories</div></div>
+    <div class="stat-item"><div class="stat-value">SaaS</div><div class="stat-label">Multi tenant Platform</div></div>
+  </div>
+</div>
+<section>
+ <div class="container">
+  <div class="eyebrow animate">Product Overview</div>
+  <h2 class="section-title animate delay-1">One focused platform. One core outcome.</h2>
+  <p class="section-desc animate delay-2">Build the operational foundation for Prime Pariksha to manage rank prediction data and deliver prediction experiences to students and partner organisations. This scope is intentionally limited to rank prediction and the SaaS capabilities required to operate it.</p>
+  <div class="feature-grid animate delay-3">
+   <div class="feature-card"><div class="feature-icon">🎯</div><h3>Rank Prediction</h3><p>Dedicated prediction journeys for NEET PG, NEET UG and JEE, using configured datasets and agreed prediction rules.</p></div>
+   <div class="feature-card"><div class="feature-icon">🏛️</div><h3>College & AIR Data</h3><p>Maintain college records and historical AIR/cutoff mappings, with versioning and a controlled publish/lock workflow.</p></div>
+   <div class="feature-card"><div class="feature-icon">🧩</div><h3>SaaS Operations</h3><p>Support multiple organisations, user creation, role based access, dashboards and subscription-based entitlements.</p></div>
+  </div>
+  <div class="eyebrow animate">Functional Scope</div>
+  <h2 class="section-title animate delay-1">Modules & Deliverables</h2>
+  <p class="section-desc animate delay-2">The initial release includes the following modules. Exam-specific inputs, data formats and prediction logic will be finalised during discovery.</p>
+
+  <div class="phase-header p1 animate"><div><div class="phase-num p1">Module 01</div><div class="phase-name">Rank Prediction Engine</div></div><div class="phase-total p1">Core Product</div></div>
+  <div class="scope-wrap animate"><table class="scope-table"><thead><tr><th style="width:44px">#</th><th>Deliverable</th><th>Description</th><th style="width:125px">Access</th></tr></thead><tbody>
+   <tr><td class="td-num">01</td><td><div class="td-title">Exam selection</div></td><td><div class="td-desc">Separate rank prediction flows for NEET PG, NEET UG and JEE, with exam specific fields and rules.</div></td><td class="td-week">Student / User</td></tr>
+   <tr><td class="td-num">02</td><td><div class="td-title">Prediction form & results</div></td><td><div class="td-desc">Capture agreed inputs, calculate an estimated rank using configured datasets/rules, and display a clear result summary.</div></td><td class="td-week">Student / User</td></tr>
+   <tr><td class="td-num">03</td><td><div class="td-title">Prediction history</div></td><td><div class="td-desc">Store and display previous predictions where permitted by the selected plan and organisation configuration.</div></td><td class="td-week">Subscribed user</td></tr>
+   <tr><td class="td-num">04</td><td><div class="td-title">Prediction configuration</div></td><td><div class="td-desc">Manage exam years, dataset versions and prediction settings through a controlled admin workflow.</div></td><td class="td-week">Platform admin</td></tr>
+  </tbody></table></div>
+
+  <div class="phase-header p2 animate"><div><div class="phase-num p2">Module 02</div><div class="phase-name">College & AIR Rank Database</div></div><div class="phase-total p2">Data Management</div></div>
+  <div class="scope-wrap animate"><table class="scope-table"><thead><tr><th style="width:44px">#</th><th>Deliverable</th><th>Description</th><th style="width:125px">Access</th></tr></thead><tbody>
+   <tr><td class="td-num">05</td><td><div class="td-title">College master</div></td><td><div class="td-desc">Create and manage college records with relevant exam, course/programme, state and agreed identifiers.</div></td><td class="td-week">Platform admin</td></tr>
+   <tr><td class="td-num">06</td><td><div class="td-title">AIR / cutoff mapping</div></td><td><div class="td-desc">Maintain historical AIR or cutoff-rank records by exam year and available state/category/quota/course dimensions.</div></td><td class="td-week">Data admin</td></tr>
+   <tr><td class="td-num">07</td><td><div class="td-title">Versioning & data lock</div></td><td><div class="td-desc">Review, approve, lock and publish a dataset version so live predictions use a controlled data snapshot.</div></td><td class="td-week">Authorised admin</td></tr>
+   <tr><td class="td-num">08</td><td><div class="td-title">Search & filters</div></td><td><div class="td-desc">Find and filter college records by supported attributes. College discovery remains limited to rank-related data.</div></td><td class="td-week">Permitted users</td></tr>
+  </tbody></table></div>
+
+  <div class="phase-header p1 animate"><div><div class="phase-num p1">Module 03</div><div class="phase-name">State wise Results Upload & Data Operations</div></div><div class="phase-total p1">Data Workflow</div></div>
+  <div class="scope-wrap animate"><table class="scope-table"><thead><tr><th style="width:44px">#</th><th>Deliverable</th><th>Description</th><th style="width:125px">Access</th></tr></thead><tbody>
+   <tr><td class="td-num">09</td><td><div class="td-title">Bulk upload</div></td><td><div class="td-desc">Upload structured CSV/XLSX files for a selected exam, year and state/region after results or official data are released.</div></td><td class="td-week">Data admin</td></tr>
+   <tr><td class="td-num">10</td><td><div class="td-title">Validation & error report</div></td><td><div class="td-desc">Validate required columns, formats, duplicates and invalid values; show row level issues before import.</div></td><td class="td-week">Data admin</td></tr>
+   <tr><td class="td-num">11</td><td><div class="td-title">Review, approve & publish</div></td><td><div class="td-desc">Keep uploads in draft/review until approved. Publish a new dataset version and retain an audit trail.</div></td><td class="td-week">Authorised admin</td></tr>
+   <tr><td class="td-num">12</td><td><div class="td-title">Import history</div></td><td><div class="td-desc">View upload status, uploader, timestamp, record counts and validation outcomes; reprocess failed imports where feasible.</div></td><td class="td-week">Platform admin</td></tr>
+  </tbody></table></div>
+
+  <div class="phase-header p2 animate"><div><div class="phase-num p2">Module 04</div><div class="phase-name">Multi tenant Architecture & User Management</div></div><div class="phase-total p2">Access Control</div></div>
+  <div class="scope-wrap animate"><table class="scope-table"><thead><tr><th style="width:44px">#</th><th>Deliverable</th><th>Description</th><th style="width:125px">Access</th></tr></thead><tbody>
+   <tr><td class="td-num">13</td><td><div class="td-title">Tenant setup</div></td><td><div class="td-desc">Create and manage tenant accounts with logically isolated users, configuration and tenant scoped records.</div></td><td class="td-week">Platform admin</td></tr>
+   <tr><td class="td-num">14</td><td><div class="td-title">User creation & roles</div></td><td><div class="td-desc">Create/invite users, assign roles, and manage activation status and permissions. Role matrix agreed during discovery.</div></td><td class="td-week">Tenant admin</td></tr>
+   <tr><td class="td-num">15</td><td><div class="td-title">Authentication & access</div></td><td><div class="td-desc">Secure sign-in and server-side authorisation so users access only resources their role and tenant permit.</div></td><td class="td-week">All users</td></tr>
+   <tr><td class="td-num">16</td><td><div class="td-title">Audit trail</div></td><td><div class="td-desc">Track key actions including user changes, uploads, approvals, dataset locks and subscription changes.</div></td><td class="td-week">Platform admin</td></tr>
+  </tbody></table></div>
+
+  <div class="phase-header p1 animate"><div><div class="phase-num p1">Module 05</div><div class="phase-name">Dashboards & Subscription Management</div></div><div class="phase-total p1">SaaS Controls</div></div>
+  <div class="scope-wrap animate"><table class="scope-table"><thead><tr><th style="width:44px">#</th><th>Deliverable</th><th>Description</th><th style="width:125px">Access</th></tr></thead><tbody>
+   <tr><td class="td-num">17</td><td><div class="td-title">Platform dashboard</div></td><td><div class="td-desc">Overview of tenants, users, exam datasets, upload activity, prediction activity and subscription status.</div></td><td class="td-week">Platform admin</td></tr>
+   <tr><td class="td-num">18</td><td><div class="td-title">Tenant dashboard</div></td><td><div class="td-desc">Tenant-scoped overview of users, permitted product usage, plan status and available rank prediction features.</div></td><td class="td-week">Tenant admin</td></tr>
+   <tr><td class="td-num">19</td><td><div class="td-title">Plans & entitlements</div></td><td><div class="td-desc">Configure subscription plans and define access limits/features, such as exams, usage quotas or user seats.</div></td><td class="td-week">Platform admin</td></tr>
+   <tr><td class="td-num">20</td><td><div class="td-title">Subscription lifecycle</div></td><td><div class="td-desc">Track active, trial, expired and cancelled states; integrate payment gateway and update subscription status as agreed.</div></td><td class="td-week">Admin / Subscriber</td></tr>
+  </tbody></table></div>
+  <div class="note-panel"><strong>Data governance principle:</strong> Uploaded records will not immediately alter live predictions. Each import follows validation and approval, and production predictions use a clearly identified, locked dataset version.</div>
+ </div>
+</section>
+<section>
+ <div class="container">
+  <div class="eyebrow animate">Dashboard Experience</div>
+  <h2 class="section-title animate delay-1">One platform, role-specific views</h2>
+  <p class="section-desc animate delay-2">The platform dashboard and tenant dashboard surface the operational metrics each role needs, while keeping tenant data separated.</p>
+  <div class="db-wrap animate delay-3">
+   <div class="db-topbar"><div class="db-title-row"><span class="db-dot"></span><span class="db-title">Prime Pariksha Admin Console</span><span class="db-live">Preview</span></div><span class="db-date">Rank prediction operations</span></div>
+   <div class="db-tabs"><div class="db-tab active" onclick="switchTab('overview',this)">📊 Overview</div><div class="db-tab" onclick="switchTab('data',this)">🗂️ Data Operations</div><div class="db-tab" onclick="switchTab('tenants',this)">🏢 Tenants & Users</div><div class="db-tab" onclick="switchTab('plans',this)">💳 Subscriptions</div></div>
+   <div class="db-panel active" id="panel-overview"><div class="kpi-row"><div class="kpi"><div class="kpi-label">Active Tenants</div><div class="kpi-value">—</div><div class="kpi-delta">Platform metric</div></div><div class="kpi"><div class="kpi-label">Published Datasets</div><div class="kpi-value">—</div><div class="kpi-delta">Across supported exams</div></div><div class="kpi"><div class="kpi-label">Predictions</div><div class="kpi-value">—</div><div class="kpi-delta">Usage metric</div></div><div class="kpi"><div class="kpi-label">Subscriptions</div><div class="kpi-value">—</div><div class="kpi-delta">Plan status</div></div></div><div class="db-content"><div class="db-section-title">Exam coverage</div><div class="progress-list"><div class="progress-item"><div class="progress-label"><span>NEET PG</span><span>Prediction module</span></div><div class="progress-track"><div class="progress-fill" style="width:88%"></div></div></div><div class="progress-item"><div class="progress-label"><span>NEET UG</span><span>Prediction module</span></div><div class="progress-track"><div class="progress-fill purple" style="width:76%"></div></div></div><div class="progress-item"><div class="progress-label"><span>JEE</span><span>Prediction module</span></div><div class="progress-track"><div class="progress-fill green" style="width:69%"></div></div></div></div><p class="db-footnote">Illustrative dashboard layout only. Live metrics depend on actual production data.</p></div></div>
+   <div class="db-panel" id="panel-data"><div class="db-content"><div class="db-section-title">Data import workflow</div><div class="data-flow"><div class="flow-step"><span>01</span><strong>Upload</strong><small>CSV / XLSX</small></div><div class="flow-arrow">→</div><div class="flow-step"><span>02</span><strong>Validate</strong><small>Rows & schema</small></div><div class="flow-arrow">→</div><div class="flow-step"><span>03</span><strong>Approve</strong><small>Authorised review</small></div><div class="flow-arrow">→</div><div class="flow-step"><span>04</span><strong>Publish</strong><small>Lock version</small></div></div><p class="db-footnote">Only approved and published datasets become available to the prediction engine.</p></div></div>
+   <div class="db-panel" id="panel-tenants"><div class="db-content"><div class="db-section-title">Tenant administration</div><div class="mini-table"><div class="mini-row mini-head"><span>Workspace</span><span>Users</span><span>Status</span></div><div class="mini-row"><span>Organisation A</span><span>Tenant-managed</span><span class="status-pill">Active</span></div><div class="mini-row"><span>Organisation B</span><span>Tenant-managed</span><span class="status-pill">Active</span></div><div class="mini-row"><span>Organisation C</span><span>Tenant-managed</span><span class="status-pill">Configured</span></div></div><p class="db-footnote">Sample records are illustrative; tenant isolation and permissions are enforced by the application.</p></div></div>
+   <div class="db-panel" id="panel-plans"><div class="db-content"><div class="db-section-title">Subscription lifecycle</div><div class="subscription-steps"><div><span class="status-dot green"></span><strong>Active</strong><small>Features enabled</small></div><div><span class="status-dot amber"></span><strong>Trial</strong><small>Limited access</small></div><div><span class="status-dot red"></span><strong>Expired or Cancelled</strong><small>Access by plan rules</small></div></div><p class="db-footnote">Plan names, prices, quotas and payment gateway will be finalised with Prime Pariksha.</p></div></div>
+  </div>
+ </div>
+</section>
+<section>
+ <div class="container">
+  <div class="eyebrow animate">Delivery Plan</div><h2 class="section-title animate delay-1">12-week implementation roadmap</h2><p class="section-desc animate delay-2">Delivery begins after kickoff and scope sign-off. The sequence below is indicative and may overlap based on data readiness and feedback cycles.</p>
+  <div class="timeline-grid animate delay-3">
+   <div class="timeline-card"><div class="week">Weeks 1 to 2</div><h3>Discovery & Design</h3><p>Confirm exam inputs, roles, tenant model, data formats, prediction rules and UI/UX.</p></div>
+   <div class="timeline-card"><div class="week">Weeks 3 to 5</div><h3>Core Platform</h3><p>Build authentication, tenant setup, user management, college master and prediction flows.</p></div>
+   <div class="timeline-card"><div class="week">Weeks 6 to 9</div><h3>Data & SaaS Modules</h3><p>Implement uploads, validation, dataset publishing, dashboards, plans and subscription lifecycle.</p></div>
+   <div class="timeline-card"><div class="week">Weeks 10 to 12</div><h3>QA & Launch</h3><p>End-to-end testing, UAT fixes, deployment, handover and production launch support.</p></div>
+  </div>
+ </div>
+</section>
+<section>
+ <div class="container">
+  <div class="eyebrow animate">Scope Boundaries</div><h2 class="section-title animate delay-1">Rank prediction — and nothing beyond it</h2><p class="section-desc animate delay-2">This proposal covers the rank prediction product and its SaaS administration. It does not include adjacent exam-preparation or counselling products.</p>
+  <div class="feature-grid animate delay-3">
+   <div class="feature-card"><div class="feature-icon">✓</div><h3>Included</h3><p>NEET PG, NEET UG and JEE rank prediction; college/AIR data; state wise uploads; validation and approvals; multi tenant setup; user roles; dashboards; subscription management; agreed deployment and handover.</p></div>
+   <div class="feature-card"><div class="feature-icon">×</div><h3>Excluded</h3><p>Counselling choice filling or allotment, admission application processing, mock tests, question banks, learning management, video courses, CRM beyond agreed admin functions, and unrelated modules.</p></div>
+   <div class="feature-card"><div class="feature-icon">!</div><h3>Dependencies</h3><p>Prime Pariksha provides lawful source datasets, confirms prediction logic and data schemas, nominates reviewers, and supplies timely feedback and access to required services.</p></div>
+  </div>
+  <div class="note-panel"><strong>Important assumptions:</strong> Prediction accuracy depends on the quality, completeness and relevance of supplied datasets and the agreed prediction methodology. Third-party services, hosting, payment gateway charges, paid APIs, and future enhancements are excluded unless explicitly agreed in writing.</div>
+ </div>
+</section>
+<section>
+ <div class="container">
+  <div class="eyebrow animate">Commercials</div><h2 class="section-title animate delay-1">Defined investment. 12-week delivery.</h2><p class="section-desc animate delay-2">A fixed project cost for the scope defined in this proposal.</p>
+  <div class="totals-box animate delay-3">
+   <div class="total-row"><span class="total-label">Product discovery, UX/UI & architecture</span><span class="total-val">Included</span></div>
+   <div class="total-row"><span class="total-label">Rank prediction & college/AIR data modules</span><span class="total-val">Included</span></div>
+   <div class="total-row"><span class="total-label">Uploads, multi-tenancy, dashboards & subscriptions</span><span class="total-val">Included</span></div>
+   <div class="total-row"><span class="total-label">QA, deployment & handover</span><span class="total-val">Included</span></div>
+   <div class="total-row total-grand"><div><span class="total-label">Total Project Cost</span><span class="gst-note">Third-party and recurring infrastructure costs excluded</span></div><div style="text-align:right"><span class="total-val"><em>₹</em>3,00,000</span></div></div>
+  </div>
+  <div class="amc-note" style="margin-top:18px"><div class="amc-icon">◷</div><p><strong>Delivery timeline: 12 weeks</strong><br/>The timeline starts after kickoff, scope sign-off and receipt of required data/access. Delays in source data, approvals, or feedback may shift the launch date. Payment milestones and post-launch support terms can be confirmed in the final agreement.</p></div>
+ </div>
+</section>
+<section class="final-cta">
+ <div class="container"><div class="eyebrow">Next Step</div><h2>Ready to build<br/>Prime Pariksha with <span style="color:var(--blue)">Devphant?</span></h2><p>Confirm the scope, nominate the project stakeholders, and schedule kickoff to begin the 12-week delivery plan.</p><a class="cta-link" href="https://www.primepariksha.com" target="_blank" rel="noopener">Prime Pariksha website ↗</a></div>
+</section>
+<footer>
+ <div class="footer-logos"><img src="https://devphant.com/images/logo.png" alt="Devphant" onerror="this.style.display='none'"/><span class="footer-sep">×</span><span class="prime-brand" style="display:flex;align-items:center;gap:8px"><img src="https://www.primepariksha.com/favicon.ico" alt="Prime Pariksha logo" style="height:22px;width:22px;object-fit:contain;background:#fff;border-radius:4px;padding:2px"/><strong style="color:#fff;font-family:'Space Grotesk',sans-serif">Prime Pariksha</strong></span></div>
+ <div class="footer-div"></div><p><strong>Prime Pariksha — Rank Prediction SaaS</strong><br/>Product scope & project proposal · Prepared by Devphant · October 2026</p><p>Confidential proposal. Final scope and commercial terms are subject to written approval.</p>
+</footer>
+<script>
+function switchTab(name,el){document.querySelectorAll('.db-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.db-panel').forEach(p=>p.classList.remove('active'));el.classList.add('active');const panel=document.getElementById('panel-'+name);if(panel)panel.classList.add('active');}
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}}),{threshold:.08});document.querySelectorAll('.animate').forEach(el=>observer.observe(el));
+</script>
+</body></html>
